@@ -27,7 +27,7 @@ public class Hero : MonoBehaviour {
     // Create a WeaponFireDelegate field named fireDelegate.
     public WeaponFireDelegate fireDelegate;
 
-	void Awake()
+	void Start()
     {
         if (S == null)
         {

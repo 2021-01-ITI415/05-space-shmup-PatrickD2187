@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Main : MonoBehaviour {
 
@@ -9,6 +10,7 @@ public class Main : MonoBehaviour {
     static Dictionary<WeaponType, WeaponDefinition> WEAP_DICT;
 
     [Header("Set in Inspector")]
+    public int score; //Enemy Score for destruction
     public GameObject[] prefabEnemies; // Array of Enemy prefabs
     public float enemySpawnPerSecond = 0.5f; // # Enemies/second
     public float enemyDefaultPadding = 1.5f; // Padding for position
@@ -20,6 +22,15 @@ public class Main : MonoBehaviour {
     };
 
     private BoundsCheck bndCheck;
+
+    public Text scoreGT;
+
+    void Start()
+    {
+        GameObject scoreGO = GameObject.Find("ScoreCounter");
+        scoreGT = scoreGO.GetComponent<Text>();
+        scoreGT.text = "0";
+    }
 
     public void ShipDestroyed( Enemy e)
     {
@@ -38,6 +49,15 @@ public class Main : MonoBehaviour {
 
             // Set it to the position of the destroyed ship
             pu.transform.position = e.transform.position;
+        }
+
+        int score = int.Parse(scoreGT.text);
+        score = score + 100;
+        scoreGT.text = score.ToString();
+
+        if(score > HighScore.score)
+        {
+            HighScore.score = score;
         }
     }
 
