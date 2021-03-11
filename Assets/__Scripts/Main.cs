@@ -10,7 +10,7 @@ public class Main : MonoBehaviour {
     static Dictionary<WeaponType, WeaponDefinition> WEAP_DICT;
 
     [Header("Set in Inspector")]
-    public int score; //Enemy Score for destruction
+    //public int score; //Enemy Score for destruction
     public GameObject[] prefabEnemies; // Array of Enemy prefabs
     public float enemySpawnPerSecond = 0.5f; // # Enemies/second
     public float enemyDefaultPadding = 1.5f; // Padding for position
@@ -22,6 +22,7 @@ public class Main : MonoBehaviour {
     };
 
     private BoundsCheck bndCheck;
+
 
     public Text scoreGT;
 
